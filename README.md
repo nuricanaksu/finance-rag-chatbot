@@ -1,43 +1,57 @@
-# FinSage AI — Retrieval-Augmented Financial Chatbot
+# **FinSage AI — Financial Insight Assistant**
 
-FinSage AI is an educational financial assistant designed to provide context-aware insights based on the Finance-Alpaca dataset.  
-It integrates Google’s Gemini 2.0 Flash model with a FAISS vector database to deliver relevant and accurate financial information using Retrieval-Augmented Generation (RAG).
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-Live%20App-brightgreen)
+![Model](https://img.shields.io/badge/Model-Gemini%202.0%20Flash-ff69b4)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
----
+**FinSage AI** is an intelligent financial insight assistant built with a Retrieval-Augmented Generation (RAG) architecture.  
+It combines semantic retrieval and generative reasoning to deliver educational explanations around markets, investments, and economic concepts.
 
-## Overview
-
-The system retrieves the most relevant financial data chunks, constructs a context-rich prompt, and generates an answer through a generative model.  
-It is built primarily for research, educational, and conceptual learning purposes — not for financial advice or live market analysis.
-
----
-
-## Key Features
-
-- RAG-based architecture combining FAISS and Gemini 2.0 Flash  
-- Trained on the Finance-Alpaca dataset  
-- Contextual question answering for finance-related queries  
-- Interactive chat-style interface built with Streamlit  
-- Modular design for easy extension and fine-tuning
+🔗 **Live Application:** [https://finsageai.streamlit.app/](https://finsageai.streamlit.app/)
 
 ---
 
-## Architecture
+## **Overview**
 
-| Component | Description |
+FinSage AI integrates semantic retrieval and Google’s Gemini 2.0 Flash model to provide concise, context-aware responses to finance-related questions.  
+The system retrieves relevant knowledge from the *Finance-Alpaca* dataset and generates structured, educational responses designed for learning — not financial advice.
+
+Use cases include:
+- Understanding financial terminology  
+- Learning about investments and markets  
+- Exploring economic indicators  
+- Comparing financial instruments  
+
+---
+
+## **System Design**
+
+### 🧱 Architecture
+1. **Embedding Generation:** Encodes financial text using the `BAAI/bge-small-en-v1.5` model.  
+2. **Vector Search:** Uses **FAISS** for efficient similarity search over embedded data.  
+3. **Contextual Retrieval:** Selects the top-k most relevant contexts for each query.  
+4. **Response Generation:** Combines retrieved context with **Gemini 2.0 Flash** for structured, human-like answers.  
+5. **Interface:** Fully implemented with **Streamlit**, styled for clarity and modern interaction.
+
+---
+
+## **Tech Stack**
+
+| Component | Technology |
 |------------|-------------|
-| LLM | Gemini 2.0 Flash (Google Generative AI) |
-| Embedding Model | BAAI/bge-small-en-v1.5 |
-| Vector Database | FAISS |
-| Dataset | Finance-Alpaca (Hugging Face) |
-| UI Layer | Streamlit |
-| Language | Python 3.10+ |
+| **Frontend** | Streamlit |
+| **Embeddings** | Sentence-Transformers (BGE Small) |
+| **Vector Indexing** | FAISS |
+| **Language Model** | Gemini 2.0 Flash (Google Generative AI) |
+| **Dataset** | Finance-Alpaca |
+| **Language** | Python 3.10+ |
 
 ---
 
-## Setup
+## **Installation & Setup**
 
-### 1. Clone the Repository
+### Clone the repository
 ```bash
 git clone https://github.com/nuricanaksu/finance-rag-chatbot.git
 cd finance-rag-chatbot
