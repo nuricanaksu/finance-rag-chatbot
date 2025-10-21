@@ -1,4 +1,22 @@
-.venv/
+# Python cache
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Env files
 .env
+
+# Data files
 data/
+faiss.index
+passages.jsonl
+
+# System files
+.DS_Store
+Thumbs.db
