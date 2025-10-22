@@ -1,105 +1,108 @@
-#  FinSage AI — Financial Insight Assistant *A Retrieval-Augmented Educational Finance Chatbot powered by Gemini 2.0 Flash* [![Streamlit App](https://img.shields.io/badge/🚀_Live_App-Streamlit-brightgreen?logo=streamlit)](https://finsageai.streamlit.app/) [![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)](https://www.python.org/) [![Model](https://img.shields.io/badge/Model-Gemini_2.0_Flash-ff69b4?logo=google)](https://ai.google.dev/gemini-api) [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+**FinSage AI** is an educational web application that explains financial and economic concepts through a Retrieval-Augmented Generation (RAG) architecture powered by **Google Gemini 2.0 Flash**.  
+It combines FAISS-based vector retrieval and Gemini’s generation capabilities to produce context-grounded financial explanations using the **Finance-Alpaca** dataset.
 
+---
 
-Overview
+## Overview
+FinSage AI implements a complete RAG pipeline:
+- Loads and indexes the *Finance-Alpaca* dataset from Hugging Face  
+- Generates embeddings with `BAAI/bge-small-en-v1.5`  
+- Stores and retrieves vectors via **FAISS**  
+- Synthesizes educational responses using **Gemini 2.0 Flash**  
+- Presents results through a modern **Streamlit** chat interface  
 
-FinSage AI is a Retrieval-Augmented Generation (RAG)–based educational chatbot that helps users understand key concepts in finance and economics.
-It integrates semantic retrieval, vector search, and Google Gemini 2.0 Flash to provide grounded, context-aware explanations using the Finance-Alpaca dataset.
+---
 
-Tech Stack
-Component	Description
-Frontend	Streamlit UI with a custom dark theme and chat interface
-Backend	Python-based RAG pipeline using FAISS and Gemini 2.0 Flash
-LLM	Google Gemini 2.0 Flash
-Embeddings	BAAI/bge-small-en-v1.5
-Vector Store	FAISS (Flat Inner Product Index)
-Dataset	gbharti/finance-alpaca
+## Live Demo
+https://finsageai.streamlit.app  
 
-Deployment	Streamlit Cloud
-Key Features
+<p align="center">
+  <img src="finsage.png" width="800" alt="FinSage AI Interface Preview">
+</p>
 
-✅ Retrieval-Augmented Generation (RAG) pipeline
+---
 
-✅ Context-aware financial question answering
+## Dataset
+Uses the **Finance-Alpaca** dataset (`gbharti/finance-alpaca`) —  
+a curated, instruction-based dataset for finance and economics.  
+No live financial data is accessed or stored.
 
-✅ Smooth typing animation for a natural chat experience
+---
 
-✅ Informational modal detailing dataset & limitations
+## Features
+- Context-aware educational Q&A  
+- FAISS-based semantic retrieval  
+- Transparent context display  
+- Local caching for speed  
+- Minimal, responsive dark theme UI  
 
-✅ Pre-loaded example queries
+**Ideal for**
+- Finance & economics students  
+- Educators and content creators  
+- Researchers exploring RAG systems  
 
-✅ Secure API-key handling for local or cloud deployment
+---
 
-⚙️ Installation & Local Setup
-1️⃣ Clone the repository
+## Technologies Used
+**Backend**     Python 3.10+  
+**Frontend**   Streamlit  
+**LLM**        Google Gemini 2.0 Flash  
+**Embeddings** SentenceTransformers (`BAAI/bge-small-en-v1.5`)  
+**Vector DB**  FAISS  
+**Dataset**    Finance-Alpaca (Hugging Face)  
+
+---
+
+## Local Installation
+
+```bash
 git clone https://github.com/nuricanaksu/finance-rag-chatbot.git
 cd finance-rag-chatbot
-
-2️⃣ Create a virtual environment
+bash
+Kodu kopyala
 python -m venv .venv
-source .venv/bin/activate      # macOS/Linux
-# or
-.venv\Scripts\activate         # Windows
-
-3️⃣ Install dependencies
+.venv\Scripts\activate      # Windows
+# source .venv/bin/activate # Mac/Linux
+bash
+Kodu kopyala
 pip install -r requirements.txt
+create a .env file and add your key:
 
-4️⃣ Add your Google API key (securely)
+bash
+Kodu kopyala
+GOOGLE_API_KEY=your_api_key_here
+run the app:
 
-Create a .env file in the project root:
-
-echo "GOOGLE_API_KEY=your_api_key_here" > .env
-
-5️⃣ Run the Streamlit app
+bash
+Kodu kopyala
 streamlit run app.py
+then open
+http://localhost:8501
 
+Project Structure
+bash
+Kodu kopyala
+finance-rag-chatbot/
+├── app.py
+├── requirements.txt
+├── .env
+├── data/
+│   ├── passages.jsonl
+│   └── faiss.index
+├── finsage.png
+└── README.md
+Security
+For local use:
 
-Then open http://localhost:8501
- in your browser.
+ini
+Kodu kopyala
+GOOGLE_API_KEY=your_api_key_here
+For Streamlit Cloud:
 
-🔐 API Key Security
-
-Your API key must never be committed to GitHub.
-
-To keep it safe:
-
-Store it locally in .env, or
-
-Use Streamlit Cloud Secrets Manager:
-
-.streamlit/secrets.toml
-
+toml
+Kodu kopyala
 GOOGLE_API_KEY = "your_api_key_here"
+.env and data/ are already excluded in .gitignore.
 
-📘 Notebook Integration
-
-This project includes Jupyter Notebooks for documentation and evaluation.
-
-Section	Description
-Section 1	RAG concepts, Gemini setup, data preprocessing
-Section 2	Embedding generation, FAISS indexing, chatbot integration
-
-These notebooks comply with the guideline:
-
-“All technical explanations must appear in Markdown cells or inline comments.”
-
-🎥 Demo Video
-
-🎬 Coming soon!
-A full walkthrough showing dataset loading, FAISS retrieval, and Gemini-powered response generation.
-(Replace this line with your video link once uploaded.)
-
-⚠️ Limitations
-
-📚 For educational purposes only — not real-time or personalized financial advice
-
-🧾 Dataset is static (pre-2023)
-
-💹 No live market or cryptocurrency data access
-
-📜 License
-
-This project is released under the MIT License.
-You are free to use, modify, and distribute it — with proper attribution.
-
-<p align="center"> <sub>💡 Built with passion by <a href="https://github.com/nuricanaksu">Nuri Aksu</a> — Powered by <strong>Gemini 2.0 Flash</strong></sub> </p>
+License
+MIT License — open for learning and adaptation.
