@@ -59,22 +59,22 @@ No live financial data is accessed or stored.
 git clone https://github.com/nuricanaksu/finance-rag-chatbot.git
 cd finance-rag-chatbot
 bash
-Kodu kopyala
+
 python -m venv .venv
 .venv\Scripts\activate      # Windows
 # source .venv/bin/activate # Mac/Linux
 bash
-Kodu kopyala
+ 
 pip install -r requirements.txt
 create a .env file and add your key:
 
 bash
-Kodu kopyala
+
 GOOGLE_API_KEY=your_api_key_here
 run the app:
 
 bash
-Kodu kopyala
+
 streamlit run app.py
 then open
 http://localhost:8501
@@ -91,16 +91,17 @@ finance-rag-chatbot/
 │   └── faiss.index
 ├── finsage.png
 └── README.md
+
 Security
 For local use:
 
 ini
-Kodu kopyala
+
 GOOGLE_API_KEY=your_api_key_here
 For Streamlit Cloud:
 
 toml
-Kodu kopyala
+
 GOOGLE_API_KEY = "your_api_key_here"
 .env and data/ are already excluded in .gitignore.
 
