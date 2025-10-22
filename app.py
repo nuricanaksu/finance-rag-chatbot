@@ -166,11 +166,20 @@ st.markdown("""[...CSS CODE SAME AS BEFORE...]""", unsafe_allow_html=True)
 
 # --- HEADER ---
 col1, col2, col3 = st.columns([0.08, 0.84, 0.08])
+
 with col2:
-    st.markdown("<h1 style='color:#00E6A8;margin-top:10px;'>FinSage AI — Your Financial Insight Partner</h1>", unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style='display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 10px;'>
+        <img src='https://raw.githubusercontent.com/nuricanaksu/finance-rag-chatbot/main/owl-logo.png' 
+             width='55' style='filter: drop-shadow(0px 0px 4px rgba(0,230,168,0.4));'>
+        <h1 style='color:#00E6A8; font-weight:700; margin:0;'>FinSage AI — Your Financial Insight Partner</h1>
+    </div>
+    """, unsafe_allow_html=True)
+
 with col3:
     if st.button("ℹ️", key="info_btn", help="View dataset info and limitations"):
         st.session_state["show_info"] = True
+
 
 
 # --- INFO MODAL ---

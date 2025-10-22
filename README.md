@@ -11,10 +11,9 @@
 ## 🎯 Overview
 
 **FinSage AI** is a **Retrieval-Augmented Generation (RAG)**-based educational chatbot  
-designed to provide conceptual explanations for finance and economics.  
-
+designed to explain fundamental concepts in **finance and economics**.  
 It combines **vector search**, **semantic retrieval**, and **Google Gemini 2.0 Flash**  
-to deliver accurate, context-aware answers from the *Finance-Alpaca* dataset.
+to generate accurate, context-grounded insights from the *Finance-Alpaca* dataset.
 
 ---
 
@@ -22,122 +21,92 @@ to deliver accurate, context-aware answers from the *Finance-Alpaca* dataset.
 
 | Component | Description |
 |------------|-------------|
-| **Frontend** | Streamlit UI with custom dark theme and chat layout |
+| **Frontend** | Streamlit UI with custom dark theme & chat interface |
 | **Backend** | Python (RAG pipeline + FAISS + Gemini 2.0 Flash) |
 | **LLM** | Google Gemini 2.0 Flash |
 | **Embeddings** | BAAI/bge-small-en-v1.5 |
-| **Vector Store** | FAISS (Flat Inner Product index) |
-| **Dataset** | `gbharti/finance-alpaca` (via Hugging Face) |
+| **Vector Store** | FAISS (Flat Inner Product Index) |
+| **Dataset** | `gbharti/finance-alpaca` from Hugging Face |
 | **Deployment** | Streamlit Cloud |
 
 ---
 
 ## 🧩 Key Features
 
+✅ Retrieval-Augmented Generation (RAG) workflow  
 ✅ Context-aware financial question answering  
-✅ Uses RAG (Retrieval-Augmented Generation) pipeline  
-✅ Gemini 2.0 Flash for reasoning & summarization  
-✅ Modern chat interface with typing animation  
-✅ Info modal explaining dataset & limitations  
-✅ Ready-to-deploy structure (secure API handling)
-
----
-
-## 🧱 How It Works — RAG Pipeline Explained
-
-FinSage AI follows the **Retrieval-Augmented Generation (RAG)** architecture:
-
-1. **Query Input (User)**  
-   The user asks a financial question (e.g., *“What is compound interest?”*).
-
-2. **Retrieval Step (FAISS + Embeddings)**  
-   The system searches a **vector database** (FAISS) containing sentence embeddings  
-   from the **Finance-Alpaca** dataset using **BAAI/bge-small-en-v1.5** model.  
-   → Top-5 semantically similar text chunks are retrieved.
-
-3. **Prompt Construction**  
-   These retrieved passages are appended as *context* to the user’s query.
-
-4. **Generation (Gemini 2.0 Flash)**  
-   The contextual prompt is sent to **Gemini 2.0 Flash**, which generates  
-   a focused, educational, and context-grounded answer.
-
-5. **UI Rendering (Streamlit)**  
-   The result is displayed dynamically inside a styled chat interface  
-   with real-time typing simulation for natural interaction.
-
----
-
-## 🧬 Architecture Diagram
-
-<p align="center">
-  <img src="assets/finsage_rag_diagram.png" alt="RAG Architecture" width="720">
-</p>
-
-> **Diagram Explanation:**  
-> - **Embeddings:** Precomputed vectors stored in FAISS index.  
-> - **Retriever:** Finds the most semantically relevant contexts.  
-> - **Generator (Gemini):** Synthesizes human-like, contextual answers.  
-> - **Streamlit UI:** Handles chat flow and response visualization.
+✅ Typing animation for natural chat effect  
+✅ Info modal explaining dataset and limitations  
+✅ Example question suggestions  
+✅ Secure API key handling for deployment  
 
 ---
 
 ## ⚙️ Installation & Local Run
 
+### 🧱 1. Clone the repository
 ```bash
-# 1️⃣ Clone the repository
 git clone https://github.com/nuricanaksu/finance-rag-chatbot.git
 cd finance-rag-chatbot
-
-# 2️⃣ Create a virtual environment
+🧰 2. Create a virtual environment
+bash
+Kodu kopyala
 python -m venv .venv
-source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
-
-# 3️⃣ Install dependencies
+source .venv/bin/activate     # or on Windows: .venv\Scripts\activate
+📦 3. Install dependencies
+bash
+Kodu kopyala
 pip install -r requirements.txt
-
-# 4️⃣ Add your Google API Key (securely)
+🔑 4. Add your Google API Key (securely)
+bash
+Kodu kopyala
 echo "GOOGLE_API_KEY=your_api_key_here" > .env
-
-# 5️⃣ Run Streamlit app
+▶️ 5. Run the Streamlit app
+bash
+Kodu kopyala
 streamlit run app.py
-💡 The app will open at http://localhost:8501
+After launch, open http://localhost:8501 in your browser.
 
 🔐 API Key Security
-To keep your API key secure:
+Your API key should never be pushed to GitHub.
 
-Store it in .env or Streamlit Cloud Secrets Manager (.streamlit/secrets.toml)
+To secure it:
 
-Never push .env to GitHub (add it to .gitignore)
+Store locally in .env
 
-The app reads the key dynamically using dotenv or st.secrets["GOOGLE_API_KEY"]
+Or use Streamlit Cloud Secrets Manager (.streamlit/secrets.toml)
 
+Example for Streamlit:
+
+toml
+Kodu kopyala
+GOOGLE_API_KEY = "your_api_key_here"
 🧾 Notebook Integration (for grading & documentation)
-The project also includes .ipynb notebooks (GenAI_Section_1.ipynb, GenAI_Section_2.ipynb)
-that document the entire workflow step-by-step in Markdown cells:
+The project includes .ipynb notebooks explaining the workflow step-by-step.
 
-Section	Content
+Section	Description
 Section 1	RAG theory, Gemini setup, data preprocessing
 Section 2	Embeddings, FAISS indexing, chatbot integration
 
-These notebooks ensure compliance with:
+These notebooks ensure compliance with the guideline:
 
 “All technical explanations must be included within Markdown cells or comments.”
 
 🎥 Demo Video
 🎬 Watch FinSage AI in Action
-(Explains dataset loading, FAISS retrieval, and Gemini answer generation)
+Explains dataset loading, FAISS retrieval, and Gemini-based generation.
 
-<p align="center"> <img src="assets/demo.gif" alt="FinSage Demo" width="700"> </p>
+(Replace the link above once you upload your demo video)
+
 ⚠️ Limitations
-Educational purpose only (no real-time or personalized advice)
+Educational purpose only (not real-time or personalized financial advice)
 
-Finance-Alpaca dataset = static (pre-2023 data)
+Dataset is static and pre-2023
 
-Model cannot access internet or live market data
+No live market or cryptocurrency data access
 
 📜 License
 This project is licensed under the MIT License.
-You are free to fork, modify, and deploy with attribution.
+You are free to fork, modify, and deploy — with attribution.
 
 <p align="center"> <sub>💡 Built with passion by <a href="https://github.com/nuricanaksu">Nuri Aksu</a> — Powered by Gemini 2.0 Flash</sub> </p> ```
